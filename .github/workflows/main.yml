@@ -65,7 +65,7 @@ jobs:
         if: always()
         uses: andstor/copycat-action@v3
         with:
-          personal_token: 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
+          personal_token: ${{ secrets.PERSONAL_TOKEN }}
           src_path: /.
           dst_path: /
           # 你的用户名
