@@ -7,7 +7,7 @@ export default sidebar([
     icon: "icon-back-stage",
     prefix: "",
     link: "/contents/learning/Readme.md",
-    activeMatch: "^/learning/$",
-    // collapsible: true,
+    collapsible: true,
+    children: "structure",
   },
 ]);
