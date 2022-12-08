@@ -6,7 +6,8 @@ export default sidebar([
     text: "学习记录",
     icon: "icon-back-stage",
     prefix: "",
-    link: "/contens/learning/Readme.md",
+    link: "/contents/learning/Readme.md",
+    activeMatch: "^/learning/$",
     // collapsible: true,
   },
 ]);
