@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <atom:link href="https://newzone.top/rss.xml" rel="self" type="application/rss+xml"/>
+    <atom:link href="https://notes-page-mu.vercel.app/rss.xml" rel="self" type="application/rss+xml"/>
     <title>我的笔记</title>
-    <link>https://newzone.top/</link>
+    <link>https://notes-page-mu.vercel.app/</link>
     <description>我的笔记</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 08 Dec 2022 02:32:32 GMT</pubDate>
-    <lastBuildDate>Thu, 08 Dec 2022 02:32:32 GMT</lastBuildDate>
+    <pubDate>Thu, 08 Dec 2022 02:47:56 GMT</pubDate>
+    <lastBuildDate>Thu, 08 Dec 2022 02:47:56 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
   </channel>
