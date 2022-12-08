@@ -61,7 +61,7 @@ jobs:
       ### 没有服务器的话，请删除本区块代码，防止报错 ###
 
 #将页面更新到 Vercel
-- name: Copy file to Vercel
+name: Copy file to Vercel
   if: always()
   uses: andstor/copycat-action@v3
   with:
