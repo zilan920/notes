@@ -6,8 +6,21 @@ export default sidebar([
     text: "学习记录",
     icon: "icon-back-stage",
     prefix: "",
-    link: "/contents/learning/Readme.md",
+    link: "contents/learning/Readme.md",
     collapsible: true,
-    children: "structure",
+    children: [
+      {
+        text: "刷题笔记",
+        icon: "emmet",
+        collapsible: true,
+        link: "contents/learning/algorithum/readme.md",
+      },
+      {
+        text: "Go学习笔记",
+        icon: "app",
+        collapsible: true,
+        link: "contents/learning/golang.md",
+      },
+    ],
   },
 ]);

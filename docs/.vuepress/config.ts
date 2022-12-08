@@ -42,8 +42,8 @@ export default defineUserConfig({
       // 你的选项
     }),
     // 谷歌分析 ID
-    googleAnalyticsPlugin({
-      id: "G-RWKZTY2P9R",
-    }),
+    // googleAnalyticsPlugin({
+    //   id: "G-RWKZTY2P9R",
+    // }),
   ],
 });
