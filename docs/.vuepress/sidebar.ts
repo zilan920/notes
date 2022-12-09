@@ -12,10 +12,7 @@ export default sidebar([
         text: "刷题笔记",
         icon: "emmet",
         prefix: "/contents/learning/algorithum/",
-        link: "README.md",
-        children: [
-          "leetcode-list-by-chatgpt.md"
-        ]
+        children: "structure"
       },
       {
         text: "Go学习笔记",
