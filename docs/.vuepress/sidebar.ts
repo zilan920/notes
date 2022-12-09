@@ -5,21 +5,23 @@ export default sidebar([
   {
     text: "学习记录",
     icon: "icon-back-stage",
-    prefix: "",
-    link: "contents/learning/Readme.md",
-    collapsible: true,
+    prefix: "/contents/learning/",
+    link: "Readme.md",
     children: [
       {
         text: "刷题笔记",
         icon: "emmet",
-        collapsible: true,
-        link: "contents/learning/algorithum/readme.md",
+        prefix: "/contents/learning/algorithum/",
+        link: "README.md",
+        children: [
+          "leetcode-list-by-chatgpt.md"
+        ]
       },
       {
         text: "Go学习笔记",
         icon: "app",
         collapsible: true,
-        link: "contents/learning/golang.md",
+        link: "golang.md",
       },
     ],
   },
