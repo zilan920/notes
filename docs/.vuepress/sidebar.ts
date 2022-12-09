@@ -11,7 +11,7 @@ export default sidebar([
       {
         text: "刷题笔记",
         icon: "emmet",
-        prefix: "/contents/learning/algorithum/",
+        prefix: "algorithum/",
         children: "structure"
       },
       {
