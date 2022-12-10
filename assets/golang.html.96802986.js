@@ -1,0 +1,1 @@
+import{_ as e}from"./_plugin-vue_export-helper.cdc0426e.js";import{o,c as t}from"./app.0f6a982e.js";const c={};function r(n,_){return o(),t("div")}const s=e(c,[["render",r],["__file","golang.html.vue"]]);export{s as default};
