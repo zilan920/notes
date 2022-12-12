@@ -30,8 +30,9 @@ type slice struct {
 > 当原slice容量(oldcap)小于256的时候，新slice(newcap)容量为原来的2倍；原slice容量超过256，新slice容量newcap = oldcap+(oldcap+3*256)/4
 
 可以看到这是会按照版本动态变化的，扩容的实际实现位于src/runtime/slice.go中的growslice 。
-1.18 版本的实现可以通过这里查看：https://github.com/golang/go/blob/dev.boringcrypto.go1.18/src/runtime/slice.go#L166
-master分支的实现在这里：https://github.com/golang/go/blob/master/src/runtime/slice.go#L157
+
+- 1.18 版本的实现可以通过这里查看：https://github.com/golang/go/blob/dev.boringcrypto.go1.18/src/runtime/slice.go#L166
+- master分支的实现在这里：https://github.com/golang/go/blob/master/src/runtime/slice.go#L157
 按照饶大给出的分析，除了在按照规律扩容以外，还会进行内存对齐。
 
 - 切片作为函数参考
@@ -72,7 +73,7 @@ type hmap struct {
 	extra *mapextra // optional fields
 }
 ```
-![image](https://golang.design/go-questions/map/assets/0.png)
+![image](/images/map.png)
 
 map的哈希函数：在程序启动时，会检测 cpu 是否支持 aes，如果支持，则使用 aes hash，否则使用 memhash。
 map使用链地址法处理哈希冲突，因此当哈希碰撞发生时，map会最终退化成一个链表。
