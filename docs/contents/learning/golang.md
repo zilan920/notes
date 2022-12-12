@@ -205,3 +205,4 @@ go语音的分析原则是：如果一个函数返回对一个变量的引用，
 
 - [Go 语言设计与实现](https://draveness.me/golang/)
 
+- [Go语言原本](https://golang.design/under-the-hood/)
