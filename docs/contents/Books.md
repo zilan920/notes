@@ -1,5 +1,5 @@
 ---
-article: false
+article: true
 title: 阅读
 icon: read
 ---
