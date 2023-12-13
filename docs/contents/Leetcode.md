@@ -49,7 +49,87 @@ icon: read
             一左一右判断是否相等，一直持续到指针相遇。
             判断最长回文子串，也就是从中间开始向两边试图查找回文串，注意中心可能是当前字符，也可能是当前和接下来的字符
 
-        
+- 动态规划法
+
+    核心思想在于找到分解问题，将问题降级再重新组装
+    斐波那契数列：分解为前面2个数之和
+    最长递增自学：当前序列是否为递增，新增下一个值是否依然为递增
+
+- 回溯法
+
+    代码框架
+    `
+    result = []
+def backtrack(路径, 选择列表):
+    if 满足结束条件:
+        result.add(路径)
+        return
+    
+    for 选择 in 选择列表:
+        做选择
+        backtrack(路径, 选择列表)
+        撤销选择
+`
+    回溯法本身不难，关键还是要多写
+
+- BFS
+
+    `java
+    // 计算从起点 start 到终点 target 的最近距离
+int BFS(Node start, Node target) {
+    Queue<Node> q; // 核心数据结构
+    Set<Node> visited; // 避免走回头路
+    
+    q.offer(start); // 将起点加入队列
+    visited.add(start);
+
+    while (q not empty) {
+        int sz = q.size();
+        /* 将当前队列中的所有节点向四周扩散 */
+        for (int i = 0; i < sz; i++) {
+            Node cur = q.poll();
+            /* 划重点：这里判断是否到达终点 */
+            if (cur is target)
+                return step;
+            /* 将 cur 的相邻节点加入队列 */
+            for (Node x : cur.adj()) {
+                if (x not in visited) {
+                    q.offer(x);
+                    visited.add(x);
+                }
+            }
+        }
+    }
+    // 如果走到这里，说明在图中没有找到目标节点
+}
+`
+    多写
+
+- 二分搜索
+
+    最重要还是细节
+
+- 滑动窗口算法
+
+```c++
+int left = 0, right = 0;
+
+while (left < right && right < s.size()) {
+    // 增大窗口
+    window.add(s[right]);
+    right++;
+    
+    while (window needs shrink) {
+        // 缩小窗口
+        window.remove(s[left]);
+        left++;
+    }
+}
+```
+
+- n数之和
+
+    依然是将数组排序，左右指针互博。如果要获取大于2的结果，例如3数之和，则将一个数取出，计算剩下数组的n-k结果。
 
 
 
