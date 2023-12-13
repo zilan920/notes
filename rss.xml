@@ -6,8 +6,8 @@
     <link>https://notes-page-mu.vercel.app/</link>
     <description>我的笔记</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 13 Dec 2023 07:57:39 GMT</pubDate>
-    <lastBuildDate>Wed, 13 Dec 2023 07:57:39 GMT</lastBuildDate>
+    <pubDate>Wed, 13 Dec 2023 08:06:25 GMT</pubDate>
+    <lastBuildDate>Wed, 13 Dec 2023 08:06:25 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -126,7 +126,7 @@
 <li>map 的实现<br>
 go 中 map 的底层是一个 hmap</li>
 </ul>
-<div class="language-golang line-numbers-mode" data-ext="golang"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><figure><img src="/images/map.png" alt="image" tabindex="0" loading="lazy"><figcaption>image</figcaption></figure>
+<div class="language-golang line-numbers-mode" data-ext="golang"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><img src="/images/map.png" alt="image" loading="lazy"></p>
 <p>map 的哈希函数：在程序启动时，会检测 cpu 是否支持 aes，如果支持，则使用 aes hash，否则使用 memhash。<br>
 map 使用链地址法处理哈希冲突，因此当哈希碰撞发生时，map 会最终退化成一个链表。</p>
 <ul>
