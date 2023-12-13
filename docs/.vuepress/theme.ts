@@ -54,7 +54,7 @@ export default hopeTheme({
   // navbarAutoHide: "always",
 
   // sidebar
-  sidebar: sidebar,
+  sidebar: "structure",
   // 侧边栏排序规则
   // sidebarSorter: ['readme', 'order', 'title'],
 
