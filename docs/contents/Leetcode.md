@@ -58,7 +58,7 @@ icon: read
 - 回溯法
 
     代码框架
-    `
+```
     result = []
 def backtrack(路径, 选择列表):
     if 满足结束条件:
@@ -69,12 +69,12 @@ def backtrack(路径, 选择列表):
         做选择
         backtrack(路径, 选择列表)
         撤销选择
-`
+```
     回溯法本身不难，关键还是要多写
 
 - BFS
 
-    `java
+```java
     // 计算从起点 start 到终点 target 的最近距离
 int BFS(Node start, Node target) {
     Queue<Node> q; // 核心数据结构
@@ -102,7 +102,7 @@ int BFS(Node start, Node target) {
     }
     // 如果走到这里，说明在图中没有找到目标节点
 }
-`
+```
     多写
 
 - 二分搜索
