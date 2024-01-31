@@ -6,8 +6,8 @@
     <link>https://notes-page-mu.vercel.app/</link>
     <description>我的笔记</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 31 Jan 2024 08:42:18 GMT</pubDate>
-    <lastBuildDate>Wed, 31 Jan 2024 08:42:18 GMT</lastBuildDate>
+    <pubDate>Wed, 31 Jan 2024 08:46:12 GMT</pubDate>
+    <lastBuildDate>Wed, 31 Jan 2024 08:46:12 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -61,6 +61,7 @@
 <p>在HTTP1.x中， header常常带有大量信息，而且每次都要重复发送，HTTP/2 使用 encoder 来减少需要传输的 header 大小，通讯双方各自cache 一份 header fields 表，既避免了重复 header 的传输，又减小了需要传输的大小。<br>
 </p>
 <h5> QUIC !!</h5>
+<p>Quic 全称 quick udp internet connection，和英文 quick 谐音，简称“快”）是由 google 提出的使用 udp 进行多路并发传输的协议。</p>
 <ul>
 <li>
 <p>强大优势</p>
