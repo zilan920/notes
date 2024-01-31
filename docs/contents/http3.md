@@ -67,6 +67,9 @@ HTTP2 带来了多路复用，允许同时通过单一的 HTTP/2 连接发起多
 
 ##### QUIC !!
 
+Quic 全称 quick udp internet connection，和英文 quick 谐音，简称“快”）是由 google 提出的使用 udp 进行多路并发传输的协议。
+
+
 - 强大优势
     - 链接耗时更短，非首次连接支持0RTT
     - 拥塞控制更出色
