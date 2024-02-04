@@ -6,8 +6,8 @@
     <link>https://notes-page-mu.vercel.app/</link>
     <description>我的笔记</description>
     <language>zh-CN</language>
-    <pubDate>Sun, 04 Feb 2024 06:38:46 GMT</pubDate>
-    <lastBuildDate>Sun, 04 Feb 2024 06:38:46 GMT</lastBuildDate>
+    <pubDate>Sun, 04 Feb 2024 06:56:14 GMT</pubDate>
+    <lastBuildDate>Sun, 04 Feb 2024 06:56:14 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -104,7 +104,10 @@
 </ul>
 <div class="language-go line-numbers-mode" data-ext="go"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> 二分搜索</h3>
 <h3> 排序</h3>
-<h2> 算法技巧</h2>
+<ul>
+<li>快速排序</li>
+</ul>
+<div class="language-go line-numbers-mode" data-ext="go"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 算法技巧</h2>
 <h3> 双指针</h3>
 <ul>
 <li><a href="https://leetcode.cn/problems/container-with-most-water/description" target="_blank" rel="noopener noreferrer">盛最多水的容器</a></li>
