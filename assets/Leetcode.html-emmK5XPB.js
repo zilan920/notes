@@ -1,4 +1,4 @@
-import{_ as n}from"./plugin-vue_export-helper-x3n3nnut.js";import{o as s,c as a,e}from"./app-ehMM2LZS.js";const i={},l=e(`<h2 id="思路" tabindex="-1"><a class="header-anchor" href="#思路" aria-hidden="true">#</a> 思路</h2><ul><li>双指针与链表 <ul><li><p>合并有序链表</p><ul><li>拉链法</li><li>多个链表合并：优先队列</li></ul></li><li><p>拆分链表</p><pre><code>直接使用两个节点遍历，按条件分别生成两个链表，最后合并起来，注意中途要拆分原有的关联
+import{_ as n}from"./plugin-vue_export-helper-x3n3nnut.js";import{o as s,c as a,e}from"./app-0VGnSafA.js";const i={},l=e(`<h2 id="思路" tabindex="-1"><a class="header-anchor" href="#思路" aria-hidden="true">#</a> 思路</h2><ul><li>双指针与链表 <ul><li><p>合并有序链表</p><ul><li>拉链法</li><li>多个链表合并：优先队列</li></ul></li><li><p>拆分链表</p><pre><code>直接使用两个节点遍历，按条件分别生成两个链表，最后合并起来，注意中途要拆分原有的关联
 </code></pre></li><li><p>合并k个有序链表</p><pre><code>类似合并2个有序链表，但这里使用到了优先级队列，快速找到最小的节点。优先级队列属于单独的数据结构，需要了解
 </code></pre></li><li><p>单链表的倒数第 k 个节点</p><pre><code>两个指针，第一个先走k步，再将两个指针一起走，最后第一个指针到达尾部时，第二个刚好走了n-k步
 类似的还有删除倒数第k个节点
