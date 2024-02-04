@@ -6,19 +6,19 @@
     <link>https://notes-page-mu.vercel.app/</link>
     <description>我的笔记</description>
     <language>zh-CN</language>
-    <pubDate>Sun, 04 Feb 2024 02:51:11 GMT</pubDate>
-    <lastBuildDate>Sun, 04 Feb 2024 02:51:11 GMT</lastBuildDate>
+    <pubDate>Sun, 04 Feb 2024 06:01:46 GMT</pubDate>
+    <lastBuildDate>Sun, 04 Feb 2024 06:01:46 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
-      <title>Leetcode</title>
+      <title>算法题</title>
       <link>https://notes-page-mu.vercel.app/contents/%E7%AE%97%E6%B3%95%E9%A2%98.html</link>
       <guid>https://notes-page-mu.vercel.app/contents/%E7%AE%97%E6%B3%95%E9%A2%98.html</guid>
-      <source url="https://notes-page-mu.vercel.app/rss.xml">Leetcode</source>
+      <source url="https://notes-page-mu.vercel.app/rss.xml">算法题</source>
       <description>数据结构 数组 移除元素 func removeElement(nums []int, val int) int { slow, fast := 0, 0 for fast &amp;lt; len(nums) { if nums[fast] != val { nums[slow] = nums[fast] slow ++ } fast ++ } return slow }</description>
       <pubDate>Sun, 04 Feb 2024 02:50:16 GMT</pubDate>
-      <content:encoded><![CDATA[<h3> 数据结构</h3>
-<h4> 数组</h4>
+      <content:encoded><![CDATA[<h2> 数据结构</h2>
+<h3> 数组</h3>
 <ul>
 <li><a href="https://leetcode.cn/problems/remove-element/description/" target="_blank" rel="noopener noreferrer">移除元素</a></li>
 </ul>
@@ -28,39 +28,92 @@
 <div class="language-go line-numbers-mode" data-ext="go"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul>
 <li><a href="https://leetcode.cn/problems/merge-intervals/description" target="_blank" rel="noopener noreferrer">合并区间</a></li>
 </ul>
-<h4> 链表</h4>
+<h3> 链表</h3>
 <ul>
 <li><a href="https://leetcode.cn/problems/reverse-linked-list/description" target="_blank" rel="noopener noreferrer">反转链表</a></li>
 </ul>
 <div class="language-go line-numbers-mode" data-ext="go"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul>
 <li><a href="https://leetcode.cn/problems/merge-two-sorted-lists/description" target="_blank" rel="noopener noreferrer">合并两个有序链表</a></li>
 </ul>
-<div class="language-go line-numbers-mode" data-ext="go"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4> 哈希表</h4>
-<h4> 二叉树</h4>
-<h4> 字符串</h4>
-<h4> 栈与队列</h4>
-<h4> 数据结构设计</h4>
-<h3> 算法</h3>
-<h4> 贪心法</h4>
-<h4> 回溯法</h4>
-<h4> DFS</h4>
-<h4> BFS</h4>
-<h4> 动态规划法</h4>
-<ul>
-<li><a href="https://leetcode.cn/problems/maximum-subarray/description" target="_blank" rel="noopener noreferrer">最大子数组和</a></li>
+<div class="language-go line-numbers-mode" data-ext="go"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul>
+<li>
+<p><a href="https://leetcode.cn/problems/merge-k-sorted-lists/description" target="_blank" rel="noopener noreferrer">合并K个升序链表</a></p>
+</li>
+<li>
+<p><a href="https://leetcode.cn/problems/add-two-numbers/description" target="_blank" rel="noopener noreferrer">两数相加</a></p>
+</li>
 </ul>
-<h4> 二分搜索</h4>
-<h4> 排序</h4>
-<h3> 算法技巧</h3>
-<h4> 双指针</h4>
+<h3> 哈希表</h3>
+<h3> 二叉树</h3>
+<ul>
+<li>
+<p><a href="https://leetcode.cn/problems/invert-binary-tree/description" target="_blank" rel="noopener noreferrer">翻转二叉树</a></p>
+</li>
+<li>
+<p><a href="https://leetcode.cn/problems/binary-tree-inorder-traversal/description" target="_blank" rel="noopener noreferrer">二叉树的中序遍历</a></p>
+</li>
+<li>
+<p><a href="https://leetcode.cn/problems/binary-tree-level-order-traversal/description" target="_blank" rel="noopener noreferrer">二叉树的层序遍历</a></p>
+</li>
+<li>
+<p><a href="https://leetcode.cn/problems/validate-binary-search-tree/description" target="_blank" rel="noopener noreferrer">验证二叉搜索树</a></p>
+</li>
+<li>
+<p><a href="https://leetcode.cn/problems/flatten-binary-tree-to-linked-list/description" target="_blank" rel="noopener noreferrer">二叉树展开为链表</a></p>
+</li>
+</ul>
+<h3> 字符串</h3>
+<h3> 栈，堆与队列</h3>
+<ul>
+<li>
+<p><a href="https://leetcode.cn/problems/valid-parentheses/description" target="_blank" rel="noopener noreferrer">有效的括号</a></p>
+</li>
+<li>
+<p><a href="https://leetcode.cn/problems/min-stack/description" target="_blank" rel="noopener noreferrer">最小栈</a></p>
+</li>
+</ul>
+<div class="language-go line-numbers-mode" data-ext="go"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul>
+<li><a href="https://leetcode.cn/problems/kth-largest-element-in-an-array/description" target="_blank" rel="noopener noreferrer">数组中第k大个元素</a></li>
+</ul>
+<h3> 数据结构设计</h3>
+<ul>
+<li>LRU</li>
+</ul>
+<h2> 算法</h2>
+<h3> 贪心法</h3>
+<h3> 回溯法</h3>
+<ul>
+<li><a href="https://leetcode.cn/problems/permutations/description" target="_blank" rel="noopener noreferrer">全排列</a></li>
+</ul>
+<div class="language-go line-numbers-mode" data-ext="go"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> DFS</h3>
+<h3> BFS</h3>
+<h3> 动态规划法</h3>
+<ul>
+<li>
+<p><a href="https://leetcode.cn/problems/maximum-subarray/description" target="_blank" rel="noopener noreferrer">最大子数组和</a></p>
+</li>
+<li>
+<p><a href="https://leetcode.cn/problems/climbing-stairs/description" target="_blank" rel="noopener noreferrer">爬楼梯</a></p>
+</li>
+<li>
+<p><a href="https://leetcode.cn/problems/coin-change/description" target="_blank" rel="noopener noreferrer">换零钱</a></p>
+</li>
+<li>
+<p><a href="https://leetcode.cn/problems/longest-increasing-subsequence/description" target="_blank" rel="noopener noreferrer">最长递增子序列</a></p>
+</li>
+</ul>
+<h3> 二分搜索</h3>
+<h3> 排序</h3>
+<h2> 算法技巧</h2>
+<h3> 双指针</h3>
 <ul>
 <li><a href="https://leetcode.cn/problems/container-with-most-water/description" target="_blank" rel="noopener noreferrer">盛最多水的容器</a></li>
 </ul>
-<h4> 滑动窗口</h4>
+<h3> 滑动窗口</h3>
 <ul>
 <li><a href="https://leetcode.cn/problems/longest-substring-without-repeating-characters/description" target="_blank" rel="noopener noreferrer">无重复字符的最长子串</a></li>
 </ul>
-<div class="language-go line-numbers-mode" data-ext="go"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4> 前缀和与差分数组</h4>
+<div class="language-go line-numbers-mode" data-ext="go"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> 前缀和与差分数组</h3>
 <ul>
 <li><a href="https://leetcode.cn/problems/subarray-sum-equals-k/description" target="_blank" rel="noopener noreferrer">和为 K 的子数组</a></li>
 </ul>
