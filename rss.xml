@@ -6,17 +6,17 @@
     <link>https://notes-page-mu.vercel.app/</link>
     <description>我的笔记</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 05 Feb 2024 04:56:35 GMT</pubDate>
-    <lastBuildDate>Mon, 05 Feb 2024 04:56:35 GMT</lastBuildDate>
+    <pubDate>Wed, 14 Feb 2024 10:14:48 GMT</pubDate>
+    <lastBuildDate>Wed, 14 Feb 2024 10:14:48 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
-      <title>算法题</title>
-      <link>https://notes-page-mu.vercel.app/contents/%E7%AE%97%E6%B3%95%E9%A2%98.html</link>
-      <guid>https://notes-page-mu.vercel.app/contents/%E7%AE%97%E6%B3%95%E9%A2%98.html</guid>
-      <source url="https://notes-page-mu.vercel.app/rss.xml">算法题</source>
+      <title>Leetcode</title>
+      <link>https://notes-page-mu.vercel.app/contents/%E7%AE%97%E6%B3%95%E9%A2%98/leetcode.html</link>
+      <guid>https://notes-page-mu.vercel.app/contents/%E7%AE%97%E6%B3%95%E9%A2%98/leetcode.html</guid>
+      <source url="https://notes-page-mu.vercel.app/rss.xml">Leetcode</source>
       <description>数据结构 数组 移除元素 func removeElement(nums []int, val int) int { slow, fast := 0, 0 for fast &amp;lt; len(nums) { if nums[fast] != val { nums[slow] = nums[fast] slow ++ } fast ++ } return slow }</description>
-      <pubDate>Sun, 04 Feb 2024 02:50:16 GMT</pubDate>
+      <pubDate>Wed, 14 Feb 2024 10:13:52 GMT</pubDate>
       <content:encoded><![CDATA[<h2> 数据结构</h2>
 <h3> 数组</h3>
 <ul>
@@ -166,615 +166,313 @@
 ]]></content:encoded>
     </item>
     <item>
-      <title>HTTP3 and RTT</title>
-      <link>https://notes-page-mu.vercel.app/contents/http3.html</link>
-      <guid>https://notes-page-mu.vercel.app/contents/http3.html</guid>
-      <source url="https://notes-page-mu.vercel.app/rss.xml">HTTP3 and RTT</source>
-      <description>几年前做了关于HTTP3的分享，为了避免遗忘，将内容整理出来并完善 什么是RTT RTT是Round Trip Time的缩写，通俗地说，就是通信一来一回的时间。我们可以使用RTT快速评估协议所需要的传输时间。 一次HTTP循环的时间 那么一次TCP建立连接时的握手，一共需要 1.5RTT 而对于一个HTTP请求&amp;amp;响应，加上HTTP Request&amp;amp;Response，算作一个1RTT。 那么基于TCP的的HTTP的消耗时间总和，就是 1.5RTT + 1RTT = 2.5RTT</description>
-      <pubDate>Wed, 31 Jan 2024 07:59:26 GMT</pubDate>
-      <content:encoded><![CDATA[<p><code>几年前做了关于HTTP3的分享，为了避免遗忘，将内容整理出来并完善</code></p>
-<h5> 什么是RTT</h5>
-<p>RTT是Round Trip Time的缩写，通俗地说，就是通信一来一回的时间。我们可以使用RTT快速评估协议所需要的传输时间。</p>
-<h5> 一次HTTP循环的时间</h5>
-<p>那么一次TCP建立连接时的握手，一共需要 1.5RTT<br>
-</p>
-<p>而对于一个HTTP请求&amp;响应，加上HTTP Request&amp;Response，算作一个1RTT。</p>
-<p>那么基于TCP的的HTTP的消耗时间总和，就是 1.5RTT + 1RTT = 2.5RTT</p>
-<h5> 关于TLS下的RTT影响</h5>
-<p>在TLS下，一个HTTP循环需要多少RTT？</p>
-<p>让我们先看一下啊TLS1.2的过程</p>
-<ul>
-<li>clientHello</li>
-<li>ServerHello, Ask for certificate</li>
-<li>验证后发送Client Key Exchange, Change Cipher Spec</li>
-<li>服务端Change Cipher Spec</li>
-</ul>
-<p>因此TLS1.2 握手时，总共需要2RTT的时间</p>
-<p>对于非首次连接，可以选择启用会话重用(Session Resumption)，可以缩小时间到1RTT</p>
-<p>因而对于采用tls1.2的HTTP连接，需要 1.5 RTT (TCP)+ 1 RTT (HTTP Request &amp; Response) + 2RTT(TLS) = 4.5RTT 时间</p>
-<ul>
-<li>TLS1.3</li>
-</ul>
-<p>TLS1.3 引入了TLS1.2 会话重用机制的升级：密钥协商机制 - PSK (pre shared key)，使得消耗时间变为1 RTT</p>
-<p>同样，对于非首次握手，可以支持 增加Early Data ，直接在握手阶段发送数据，相当于0-RTT （发送数据不需要额外RTT，即为0RTT）</p>
-<p>因而一个HTTP通讯，需要 1.5 RTT(TCP)+ 1 RTT(HTTP Request &amp; Response) + 1RTT(TLS) = 3.5RTT 时间</p>
-<p></p>
-<h5> 关于HTTP的影响</h5>
-<ul>
-<li>HTTP1.x支持长连接 keep-live， pipeline</li>
-</ul>
-<p>在HTTP1.x中，每个连接相互独立，因而每一个HTTP请求都需要3.5RTT。最终结果视请求量正比增长。开启keep-live 后，可以为后续的连接复用已开启的TCP，从而减少后续所需时间。</p>
-<p>长连接带来的问题：但是在同一个 TCP 连接里面，所有的数据通信是按次序进行的。服务器只有处理完一个回应，才会进行下一个回应。要是前面的回应特别慢，后面就会有许多请求排队等着。这称为"队头堵塞"（Head-of-line blocking）。</p>
-<p>这也带来pipeline技术，在相应到达之前，可以将多条请求放入队列，当第一条请求发往服务器的时候，第二第三条请求也可以开始发送了。<br>
-</p>
-<ul>
-<li>HTTP/2 多路复用，头信息压缩</li>
-</ul>
-<p>HTTP2 带来了多路复用，允许同时通过单一的 HTTP/2 连接发起多重的请求-响应消息。即连接共享，即每一个 request 都是是用作连接共享机制的。一个 request 对应一个 id，这样一个连接上可以有多个 request，每个连接的 request 可以随机的混杂在一起，接收方可以根据 request 的 id 将 request 再归属到各自不同的服务端请求里面</p>
-<p>复用TLS连接，第一个之后的每一个HTTP可以减少1.5RTT + 2RTT = 3.5 RTT时间<br>
-</p>
-<p>在HTTP1.x中， header常常带有大量信息，而且每次都要重复发送，HTTP/2 使用 encoder 来减少需要传输的 header 大小，通讯双方各自cache 一份 header fields 表，既避免了重复 header 的传输，又减小了需要传输的大小。<br>
-</p>
-<h5> QUIC !!</h5>
-<p>Quic 全称 quick udp internet connection，和英文 quick 谐音，简称“快”）是由 google 提出的使用 udp 进行多路并发传输的协议。</p>
-<ul>
-<li>
-<p>强大优势</p>
-<ul>
-<li>链接耗时更短，非首次连接支持0RTT</li>
-<li>拥塞控制更出色</li>
-<li>更好的多路复用</li>
-<li>前向纠错特性</li>
-<li>链接迁移特性<br>
-</li>
-</ul>
-</li>
-<li>
-<p>华丽转身</p>
-</li>
-</ul>
-<p>2018年 HTTP Over QUIC 更名 HTTP/3<br>
-</p>
-<h5> 对比</h5>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>HTTP</th>
-<th>HTTPS 1.2 首次连接</th>
-<th>HTTPS 1.2 连接复用</th>
-<th>HTTPS 1.3 首次连接</th>
-<th>HTTPS 1.3 连接复用</th>
-<th>HTTP over QUIC首次连接</th>
-<th>HTTP over QUIC  连接复用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TCP握手</td>
-<td>1.5RTT</td>
-<td>1.5RTT</td>
-<td>0 RTT</td>
-<td>1.5RTT</td>
-<td>0 RTT</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>TLS握手</td>
-<td>-</td>
-<td>2RTT</td>
-<td>1RTT</td>
-<td>1RTT</td>
-<td>0RTT</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>QUIC握手</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>1RTT</td>
-<td>0RTT</td>
-</tr>
-<tr>
-<td>HTTP请求&amp;响应</td>
-<td>1RTT</td>
-<td>1RTT</td>
-<td>1RTT</td>
-<td>1RTT</td>
-<td>1RTT</td>
-<td>1RTT</td>
-<td>1RTT</td>
-</tr>
-<tr>
-<td>合计</td>
-<td>2.5RTT</td>
-<td>4.5RTT</td>
-<td>2RTT</td>
-<td>3.5RTT</td>
-<td>1RTT</td>
-<td>2RTT</td>
-<td>1RTT</td>
-</tr>
-</tbody>
-</table>
-]]></content:encoded>
-    </item>
-    <item>
       <title>Leetcode</title>
-      <link>https://notes-page-mu.vercel.app/contents/Leetcode.html</link>
-      <guid>https://notes-page-mu.vercel.app/contents/Leetcode.html</guid>
+      <link>https://notes-page-mu.vercel.app/contents/%E7%AE%97%E6%B3%95%E9%A2%98/%E5%89%91%E6%8C%87offer.html</link>
+      <guid>https://notes-page-mu.vercel.app/contents/%E7%AE%97%E6%B3%95%E9%A2%98/%E5%89%91%E6%8C%87offer.html</guid>
       <source url="https://notes-page-mu.vercel.app/rss.xml">Leetcode</source>
-      <description>思路 双指针与链表 合并有序链表 拉链法 多个链表合并：优先队列 拆分链表 直接使用两个节点遍历，按条件分别生成两个链表，最后合并起来，注意中途要拆分原有的关联 合并k个有序链表 类似合并2个有序链表，但这里使用到了优先级队列，快速找到最小的节点。优先级队列属于单独的数据结构，需要了解 单链表的倒数第 k 个节点 两个指针，第一个先走k步，再将两个指针一起走，最后第一个指针到达尾部时，第二个刚好走了n-k步 类似的还有删除倒数第k个节点 链表中点 直接使用快慢指针 判断是否包含环 使用快慢指针，如果两个指针相交则表示包含环，相交后任意一个节点回到头，然后相同速度往前走，再次相交则为相交的起点。 两个链表是否相交 两个指针分别依次走两个链表，最后看是否相交。 类似的，也可以将两个链表首位相连，判断是否存在环 递归反转</description>
-      <pubDate>Wed, 13 Dec 2023 08:06:56 GMT</pubDate>
-      <content:encoded><![CDATA[<h2> 思路</h2>
+      <description>剑指 Offer 题解 前言 题目来自《何海涛. 剑指 Offer[M]. 电子工业出版社, 2012.》，刷题网站推荐： 牛客网 Leetcode</description>
+      <pubDate>Wed, 14 Feb 2024 10:13:52 GMT</pubDate>
+      <content:encoded><![CDATA[<h1> 剑指 Offer 题解</h1>
+<h2> 前言</h2>
+<p>题目来自《何海涛. 剑指 Offer[M]. 电子工业出版社, 2012.》，刷题网站推荐：</p>
 <ul>
-<li>双指针与链表
+<li><a href="https://www.nowcoder.com/ta/coding-interviews?from=cyc_github" target="_blank" rel="noopener noreferrer">牛客网</a></li>
+<li><a href="https://leetcode-cn.com/problemset/lcof/" target="_blank" rel="noopener noreferrer">Leetcode</a></li>
+</ul>
+<h2> 数组与矩阵</h2>
 <ul>
-<li>
-<p>合并有序链表</p>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/3.%20%E6%95%B0%E7%BB%84%E4%B8%AD%E9%87%8D%E5%A4%8D%E7%9A%84%E6%95%B0%E5%AD%97.html" target="blank">3. 数组中重复的数字</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/4.%20%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9F%A5%E6%89%BE.html" target="blank">4. 二维数组中的查找</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/5.%20%E6%9B%BF%E6%8D%A2%E7%A9%BA%E6%A0%BC.html" target="blank">5. 替换空格</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/29.%20%E9%A1%BA%E6%97%B6%E9%92%88%E6%89%93%E5%8D%B0%E7%9F%A9%E9%98%B5.html" target="blank">29. 顺时针打印矩阵</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/50.%20%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E5%AD%97%E7%AC%A6%E4%BD%8D%E7%BD%AE.html" target="blank">50. 第一个只出现一次的字符位置</a></li>
+</ul>
+<h2> 栈队列堆</h2>
 <ul>
-<li>拉链法</li>
-<li>多个链表合并：优先队列</li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/9.%20%E7%94%A8%E4%B8%A4%E4%B8%AA%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97.html" target="blank">9. 用两个栈实现队列</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/30.%20%E5%8C%85%E5%90%AB%20min%20%E5%87%BD%E6%95%B0%E7%9A%84%E6%A0%88.html" target="blank">30. 包含 min 函数的栈</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/31.%20%E6%A0%88%E7%9A%84%E5%8E%8B%E5%85%A5%E3%80%81%E5%BC%B9%E5%87%BA%E5%BA%8F%E5%88%97.html" target="blank">31. 栈的压入、弹出序列</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/40.%20%E6%9C%80%E5%B0%8F%E7%9A%84%20K%20%E4%B8%AA%E6%95%B0.html" target="blank">40. 最小的 K 个数</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/41.1%20%E6%95%B0%E6%8D%AE%E6%B5%81%E4%B8%AD%E7%9A%84%E4%B8%AD%E4%BD%8D%E6%95%B0.html" target="blank">41.1 数据流中的中位数</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/41.2%20%E5%AD%97%E7%AC%A6%E6%B5%81%E4%B8%AD%E7%AC%AC%E4%B8%80%E4%B8%AA%E4%B8%8D%E9%87%8D%E5%A4%8D%E7%9A%84%E5%AD%97%E7%AC%A6.html" target="blank">41.2 字符流中第一个不重复的字符</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/59.%20%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC.html" target="blank">59. 滑动窗口的最大值</a></li>
 </ul>
-</li>
-<li>
-<p>拆分链表</p>
-
-</li>
-<li>
-<p>合并k个有序链表</p>
-
-</li>
-<li>
-<p>单链表的倒数第 k 个节点</p>
-
-</li>
-<li>
-<p>链表中点</p>
-
-</li>
-<li>
-<p>判断是否包含环</p>
-
-</li>
-<li>
-<p>两个链表是否相交</p>
-
-</li>
-<li>
-<p>递归反转</p>
-</li>
-</ul>
-</li>
-</ul>
-<div class="language-golang line-numbers-mode" data-ext="golang"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul>
-<li>
-<p>双指针与数组</p>
-</li>
-<li>
-<p>有序数组二分搜索</p>
-</li>
-<li>
-<p>二分搜索重在细节，特别是左右边界的判断，以及判断之后mid的变化</p>
-</li>
-<li>
-<p>二分不仅仅用于显然的搜索场景，也可以用于一些特殊的搜索场景（如求极值）</p>
-
-</li>
-<li>
-<p>田忌赛马</p>
-
-</li>
-<li>
-<p>快慢指针</p>
+<h2> 双指针</h2>
 <ul>
-<li>
-<p>原地修改数组</p>
-
-</li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/57.1%20%E5%92%8C%E4%B8%BA%20S%20%E7%9A%84%E4%B8%A4%E4%B8%AA%E6%95%B0%E5%AD%97.html" target="blank">57.1 和为 S 的两个数字</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/57.2%20%E5%92%8C%E4%B8%BA%20S%20%E7%9A%84%E8%BF%9E%E7%BB%AD%E6%AD%A3%E6%95%B0%E5%BA%8F%E5%88%97.html" target="blank">57.2 和为 S 的连续正数序列</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/58.1%20%E7%BF%BB%E8%BD%AC%E5%8D%95%E8%AF%8D%E9%A1%BA%E5%BA%8F%E5%88%97.html" target="blank">58.1 翻转单词顺序列</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/58.2%20%E5%B7%A6%E6%97%8B%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2.html" target="blank">58.2 左旋转字符串</a></li>
 </ul>
-</li>
-<li>
-<p>左右指针</p>
+<h2> 链表</h2>
 <ul>
-<li>
-<p>二分查找</p>
-
-</li>
-<li>
-<p>两数之和，但是是有序数组</p>
-
-</li>
-<li>
-<p>翻转数组</p>
-
-</li>
-<li>
-<p>判断回文</p>
-
-</li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/6.%20%E4%BB%8E%E5%B0%BE%E5%88%B0%E5%A4%B4%E6%89%93%E5%8D%B0%E9%93%BE%E8%A1%A8.html" target="blank">6. 从尾到头打印链表</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/18.1%20%E5%9C%A8%20O(1)%20%E6%97%B6%E9%97%B4%E5%86%85%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E8%8A%82%E7%82%B9.html" target="blank">18.1 在 O(1) 时间内删除链表节点</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/18.2%20%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E4%B8%AD%E9%87%8D%E5%A4%8D%E7%9A%84%E7%BB%93%E7%82%B9.html" target="blank">18.2 删除链表中重复的结点</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/22.%20%E9%93%BE%E8%A1%A8%E4%B8%AD%E5%80%92%E6%95%B0%E7%AC%AC%20K%20%E4%B8%AA%E7%BB%93%E7%82%B9.html" target="blank">22. 链表中倒数第 K 个结点</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/23.%20%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%8E%AF%E7%9A%84%E5%85%A5%E5%8F%A3%E7%BB%93%E7%82%B9.html" target="blank">23. 链表中环的入口结点</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/24.%20%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8.html" target="blank">24. 反转链表</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/25.%20%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%8E%92%E5%BA%8F%E7%9A%84%E9%93%BE%E8%A1%A8.html" target="blank">25. 合并两个排序的链表</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/35.%20%E5%A4%8D%E6%9D%82%E9%93%BE%E8%A1%A8%E7%9A%84%E5%A4%8D%E5%88%B6.html" target="blank">35. 复杂链表的复制</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/52.%20%E4%B8%A4%E4%B8%AA%E9%93%BE%E8%A1%A8%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%85%AC%E5%85%B1%E7%BB%93%E7%82%B9.html" target="blank">52. 两个链表的第一个公共结点</a></li>
 </ul>
-</li>
-<li>
-<p>动态规划法</p>
-<p>核心思想在于找到分解问题，将问题降级再重新组装<br>
-斐波那契数列：分解为前面2个数之和<br>
-最长递增自学：当前序列是否为递增，新增下一个值是否依然为递增</p>
-</li>
-<li>
-<p>回溯法</p>
-<p>代码框架</p>
-</li>
-</ul>
-<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>
+<h2> 树</h2>
 <ul>
-<li>BFS</li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/7.%20%E9%87%8D%E5%BB%BA%E4%BA%8C%E5%8F%89%E6%A0%91.html" target="blank">7. 重建二叉树</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/8.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%8B%E4%B8%80%E4%B8%AA%E7%BB%93%E7%82%B9.html" target="blank">8. 二叉树的下一个结点</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/26.%20%E6%A0%91%E7%9A%84%E5%AD%90%E7%BB%93%E6%9E%84.html" target="blank">26. 树的子结构</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/27.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%95%9C%E5%83%8F.html" target="blank">27. 二叉树的镜像</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/28.%20%E5%AF%B9%E7%A7%B0%E7%9A%84%E4%BA%8C%E5%8F%89%E6%A0%91.html" target="blank">28. 对称的二叉树</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/32.1%20%E4%BB%8E%E4%B8%8A%E5%BE%80%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91.html" target="blank">32.1 从上往下打印二叉树</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/32.2%20%E6%8A%8A%E4%BA%8C%E5%8F%89%E6%A0%91%E6%89%93%E5%8D%B0%E6%88%90%E5%A4%9A%E8%A1%8C.html" target="blank">32.2 把二叉树打印成多行</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/32.3%20%E6%8C%89%E4%B9%8B%E5%AD%97%E5%BD%A2%E9%A1%BA%E5%BA%8F%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91.html" target="blank">32.3 按之字形顺序打印二叉树</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/33.%20%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97.html" target="blank">33. 二叉搜索树的后序遍历序列</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/34.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E5%92%8C%E4%B8%BA%E6%9F%90%E4%B8%80%E5%80%BC%E7%9A%84%E8%B7%AF%E5%BE%84.html" target="blank">34. 二叉树中和为某一值的路径</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/36.%20%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%8E%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8.html" target="blank">36. 二叉搜索树与双向链表</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/37.%20%E5%BA%8F%E5%88%97%E5%8C%96%E4%BA%8C%E5%8F%89%E6%A0%91.html" target="blank">37. 序列化二叉树</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/54.%20%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91%E7%9A%84%E7%AC%AC%20K%20%E4%B8%AA%E7%BB%93%E7%82%B9.html" target="blank">54. 二叉查找树的第 K 个结点</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/55.1%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6.html" target="blank">55.1 二叉树的深度</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/55.2%20%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91.html" target="blank">55.2 平衡二叉树</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/68.%20%E6%A0%91%E4%B8%AD%E4%B8%A4%E4%B8%AA%E8%8A%82%E7%82%B9%E7%9A%84%E6%9C%80%E4%BD%8E%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88.html" target="blank">68. 树中两个节点的最低公共祖先</a></li>
 </ul>
-<div class="language-java line-numbers-mode" data-ext="java"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>
+<h2> 贪心思想</h2>
 <ul>
-<li>
-<p>二分搜索</p>
-<p>最重要还是细节</p>
-</li>
-<li>
-<p>滑动窗口算法</p>
-</li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/14.%20%E5%89%AA%E7%BB%B3%E5%AD%90.html" target="blank">14. 剪绳子</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/63.%20%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E5%A4%A7%E5%88%A9%E6%B6%A6.html" target="blank">63. 股票的最大利润</a></li>
 </ul>
-<div class="language-c++ line-numbers-mode" data-ext="c++"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul>
-<li>
-<p>n数之和</p>
-<p>依然是将数组排序，左右指针互博。如果要获取大于2的结果，例如3数之和，则将一个数取出，计算剩下数组的n-k结果。</p>
-</li>
-</ul>
-<h2> 核心思路</h2>
-<h3> 基础数据结构</h3>
-<h4> 数组/链表</h4>
+<h2> 二分查找</h2>
 <ul>
-<li>
-<p>数组思路：前缀和</p>
-<p>将数组转换为前缀和，可以方便的计算某一段的和，也可以用于二维数组，计算范围的和</p>
-</li>
-<li>
-<p>数组思路：差分数组</p>
-<p>差分数组是前缀和的逆运算，可以用于区间加法，航班预订等问题。<br>
-差分数组的特点是，可以方便的一个数组批量的进行操作，当我们为一个数组区间进行增加或减小时，可以为仅操作差分数组区间的第一个与最后一个。再恢复为原有的数组。</p>
-</li>
-<li>
-<p>滑动窗口法</p>
-<p>滑动窗口是一种非常常用的算法思路，可以用来解决子串等问题。<br>
-与滑动窗口类似的还有快慢指针，左右指针，都是通过两个指针对链表进行操作。<br>
-一个简单的滑动窗口算法可以是这样</p>
-</li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/11.%20%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%B0%8F%E6%95%B0%E5%AD%97.html" target="blank">11. 旋转数组的最小数字</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/53.%20%E6%95%B0%E5%AD%97%E5%9C%A8%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E5%87%BA%E7%8E%B0%E7%9A%84%E6%AC%A1%E6%95%B0.html" target="blank">53. 数字在排序数组中出现的次数</a></li>
 </ul>
-<div class="language-c++ line-numbers-mode" data-ext="c++"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul>
-<li>有序数组二分搜索</li>
-<li>原地修改数组</li>
-<li>单链表</li>
-<li>链表合并，链表分割</li>
-<li>链表倒数第k个节点</li>
-<li>链表中点，是否有环</li>
-<li>两个链表是否相交</li>
-<li>递归操作链表</li>
-</ul>
-<h4> 队列/栈</h4>
+<h2> 分治</h2>
 <ul>
-<li>队列和栈相互实现</li>
-<li>括号匹配问题</li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/16.%20%E6%95%B0%E5%80%BC%E7%9A%84%E6%95%B4%E6%95%B0%E6%AC%A1%E6%96%B9.html" target="blank">16. 数值的整数次方</a></li>
 </ul>
-<h4> 数据结构设计</h4>
+<h2> 搜索</h2>
 <ul>
-<li>LRU算法</li>
-<li>LFU算法</li>
-<li>查找/删除数组中任意元素</li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/12.%20%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84.html" target="blank">12. 矩阵中的路径</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/13.%20%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E8%BF%90%E5%8A%A8%E8%8C%83%E5%9B%B4.html" target="blank">13. 机器人的运动范围</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/38.%20%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97.html" target="blank">38. 字符串的排列</a></li>
 </ul>
-<h3> 进阶数据结构</h3>
-<h4> 二叉树</h4>
-<h4> 二叉搜索树</h4>
-<h4> 图</h4>
-<h3> 暴力算法</h3>
+<h2> 排序</h2>
 <ul>
-<li>DFS/回溯算法</li>
-<li>BFS算法</li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/21.%20%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E4%BD%BF%E5%A5%87%E6%95%B0%E4%BD%8D%E4%BA%8E%E5%81%B6%E6%95%B0%E5%89%8D%E9%9D%A2.html" target="blank">21. 调整数组顺序使奇数位于偶数前面</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/45.%20%E6%8A%8A%E6%95%B0%E7%BB%84%E6%8E%92%E6%88%90%E6%9C%80%E5%B0%8F%E7%9A%84%E6%95%B0.html" target="blank">45. 把数组排成最小的数</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/51.%20%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%80%86%E5%BA%8F%E5%AF%B9.html" target="blank">51. 数组中的逆序对</a></li>
 </ul>
+<h2> 动态规划</h2>
+<ul>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/10.1%20%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97.html" target="blank">10.1 斐波那契数列</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/10.2%20%E7%9F%A9%E5%BD%A2%E8%A6%86%E7%9B%96.html" target="blank">10.2 矩形覆盖</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/10.3%20%E8%B7%B3%E5%8F%B0%E9%98%B6.html" target="blank">10.3 跳台阶</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/10.4%20%E5%8F%98%E6%80%81%E8%B7%B3%E5%8F%B0%E9%98%B6.html" target="blank">10.4 变态跳台阶</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/42.%20%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E5%92%8C.html" target="blank">42. 连续子数组的最大和</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/47.%20%E7%A4%BC%E7%89%A9%E7%9A%84%E6%9C%80%E5%A4%A7%E4%BB%B7%E5%80%BC.html" target="blank">47. 礼物的最大价值</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/48.%20%E6%9C%80%E9%95%BF%E4%B8%8D%E5%90%AB%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2.html" target="blank">48. 最长不含重复字符的子字符串</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/49.%20%E4%B8%91%E6%95%B0.html" target="blank">49. 丑数</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/60.%20n%20%E4%B8%AA%E9%AA%B0%E5%AD%90%E7%9A%84%E7%82%B9%E6%95%B0.html" target="blank">60. n 个骰子的点数</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/66.%20%E6%9E%84%E5%BB%BA%E4%B9%98%E7%A7%AF%E6%95%B0%E7%BB%84.html" target="blank">66. 构建乘积数组</a></li>
+</ul>
+<h2> 数学</h2>
+<ul>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/39.%20%E6%95%B0%E7%BB%84%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E8%B6%85%E8%BF%87%E4%B8%80%E5%8D%8A%E7%9A%84%E6%95%B0%E5%AD%97.html" target="blank">39. 数组中出现次数超过一半的数字</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/62.%20%E5%9C%86%E5%9C%88%E4%B8%AD%E6%9C%80%E5%90%8E%E5%89%A9%E4%B8%8B%E7%9A%84%E6%95%B0.html" target="blank">62. 圆圈中最后剩下的数</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/43.%20%E4%BB%8E%201%20%E5%88%B0%20n%20%E6%95%B4%E6%95%B0%E4%B8%AD%201%20%E5%87%BA%E7%8E%B0%E7%9A%84%E6%AC%A1%E6%95%B0.html" target="blank">43. 从 1 到 n 整数中 1 出现的次数</a></li>
+</ul>
+<h2> 位运算</h2>
+<ul>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/15.%20%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%AD%201%20%E7%9A%84%E4%B8%AA%E6%95%B0.html" target="blank">15. 二进制中 1 的个数</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/56.%20%E6%95%B0%E7%BB%84%E4%B8%AD%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97.html" target="blank">56. 数组中只出现一次的数字</a></li>
+</ul>
+<h2> 其它</h2>
+<ul>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/17.%20%E6%89%93%E5%8D%B0%E4%BB%8E%201%20%E5%88%B0%E6%9C%80%E5%A4%A7%E7%9A%84%20n%20%E4%BD%8D%E6%95%B0.html" target="blank">17. 打印从 1 到最大的 n 位数</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/19.%20%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8C%B9%E9%85%8D.html" target="blank">19. 正则表达式匹配</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/20.%20%E8%A1%A8%E7%A4%BA%E6%95%B0%E5%80%BC%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2.html" target="blank">20. 表示数值的字符串</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/44.%20%E6%95%B0%E5%AD%97%E5%BA%8F%E5%88%97%E4%B8%AD%E7%9A%84%E6%9F%90%E4%B8%80%E4%BD%8D%E6%95%B0%E5%AD%97.html" target="blank">44. 数字序列中的某一位数字</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/46.%20%E6%8A%8A%E6%95%B0%E5%AD%97%E7%BF%BB%E8%AF%91%E6%88%90%E5%AD%97%E7%AC%A6%E4%B8%B2.html" target="blank">46. 把数字翻译成字符串</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/61.%20%E6%89%91%E5%85%8B%E7%89%8C%E9%A1%BA%E5%AD%90.html" target="blank">61. 扑克牌顺子</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/64.%20%E6%B1%82%201+2+3+...+n.html" target="blank">64. 求 1+2+3+...+n</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/65.%20%E4%B8%8D%E7%94%A8%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4%E5%81%9A%E5%8A%A0%E6%B3%95.html" target="blank">65. 不用加减乘除做加法</a></li>
+<li><a href="/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/67.%20%E6%8A%8A%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E6%88%90%E6%95%B4%E6%95%B0.html" target="blank">67. 把字符串转换成整数</a></li>
+</ul>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>10.1 斐波那契数列</title>
+      <link>https://notes-page-mu.vercel.app/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/10.1%20%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97.html</link>
+      <guid>https://notes-page-mu.vercel.app/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/10.1%20%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97.html</guid>
+      <source url="https://notes-page-mu.vercel.app/rss.xml">10.1 斐波那契数列</source>
+      <description>10.1 斐波那契数列 题目链接 牛客网</description>
+      <pubDate>Wed, 14 Feb 2024 10:13:52 GMT</pubDate>
+      <content:encoded><![CDATA[<h1> 10.1 斐波那契数列</h1>
+<h2> 题目链接</h2>
+<p><a href="https://www.nowcoder.com/practice/c6c7742f5ba7442aada113136ddea0c3?tpId=13&amp;tqId=11160&amp;tPage=1&amp;rp=1&amp;ru=/ta/coding-interviews&amp;qru=/ta/coding-interviews/question-ranking&amp;from=cyc_github" target="_blank" rel="noopener noreferrer">牛客网</a></p>
+<h2> 题目描述</h2>
+<p>求斐波那契数列的第 n 项，n &lt;= 39。</p>
+<!--<div align="center"><img src="https://latex.codecogs.com/gif.latex?f(n)=\left\{\begin{array}{rcl}0&&{n=0}\\1&&{n=1}\\f(n-1)+f(n-2)&&{n>1}\end{array}\right." class="mathjax-pic"/></div> <br> -->
+<div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/45be9587-6069-4ab7-b9ac-840db1a53744.jpg" width="330px"> </div><br>
+<h2> 解题思路</h2>
+<p>如果使用递归求解，会重复计算一些子问题。例如，计算 f(4) 需要计算 f(3) 和 f(2)，计算 f(3) 需要计算 f(2) 和 f(1)，可以看到 f(2) 被重复计算了。</p>
+<div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/c13e2a3d-b01c-4a08-a69b-db2c4e821e09.png" width="350px"> </div><br>
+<p>递归是将一个问题划分成多个子问题求解，动态规划也是如此，但是动态规划会把子问题的解缓存起来，从而避免重复求解子问题。</p>
+<div class="language-java line-numbers-mode" data-ext="java"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>考虑到第 i 项只与第 i-1 和第 i-2 项有关，因此只需要存储前两项的值就能求解第 i 项，从而将空间复杂度由 O(N) 降低为 O(1)。</p>
+<div class="language-java line-numbers-mode" data-ext="java"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>由于待求解的 n 小于 40，因此可以将前 40 项的结果先进行计算，之后就能以 O(1) 时间复杂度得到第 n 项的值。</p>
+<div class="language-java line-numbers-mode" data-ext="java"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content:encoded>
+    </item>
+    <item>
+      <title>10.2 矩形覆盖</title>
+      <link>https://notes-page-mu.vercel.app/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/10.2%20%E7%9F%A9%E5%BD%A2%E8%A6%86%E7%9B%96.html</link>
+      <guid>https://notes-page-mu.vercel.app/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/10.2%20%E7%9F%A9%E5%BD%A2%E8%A6%86%E7%9B%96.html</guid>
+      <source url="https://notes-page-mu.vercel.app/rss.xml">10.2 矩形覆盖</source>
+      <description>10.2 矩形覆盖 题目链接 牛客网</description>
+      <pubDate>Wed, 14 Feb 2024 10:13:52 GMT</pubDate>
+      <content:encoded><![CDATA[<h1> 10.2 矩形覆盖</h1>
+<h2> 题目链接</h2>
+<p><a href="https://www.nowcoder.com/practice/72a5a919508a4251859fb2cfb987a0e6?tpId=13&amp;tqId=11163&amp;tPage=1&amp;rp=1&amp;ru=/ta/coding-interviews&amp;qru=/ta/coding-interviews/question-ranking&amp;from=cyc_github" target="_blank" rel="noopener noreferrer">牛客网</a></p>
+<h2> 题目描述</h2>
+<p>我们可以用 2*1 的小矩形横着或者竖着去覆盖更大的矩形。请问用 n 个 2*1 的小矩形无重叠地覆盖一个 2*n 的大矩形，总共有多少种方法？</p>
+<div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/b903fda8-07d0-46a7-91a7-e803892895cf.gif" width="100px"> </div><br>
+<h2> 解题思路</h2>
+<p>当 n 为 1 时，只有一种覆盖方法：</p>
+<div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/f6e146f1-57ad-411b-beb3-770a142164ef.png" width="100px"> </div><br>
+<p>当 n 为 2 时，有两种覆盖方法：</p>
+<div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/fb3b8f7a-4293-4a38-aae1-62284db979a3.png" width="200px"> </div><br>
+<p>要覆盖 2*n 的大矩形，可以先覆盖 2*1 的矩形，再覆盖 2*(n-1) 的矩形；或者先覆盖 2*2 的矩形，再覆盖 2*(n-2) 的矩形。而覆盖 2*(n-1) 和 2*(n-2) 的矩形可以看成子问题。该问题的递推公式如下：</p>
+<!-- <div align="center"><img src="https://latex.codecogs.com/gif.latex?f(n)=\left\{\begin{array}{rcl}1&&{n=1}\\2&&{n=2}\\f(n-1)+f(n-2)&&{n>1}\end{array}\right." class="mathjax-pic"/></div> <br> -->
+<div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/508c6e52-9f93-44ed-b6b9-e69050e14807.jpg" width="370px"> </div><br>
+<div class="language-java line-numbers-mode" data-ext="java"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content:encoded>
+    </item>
+    <item>
+      <title>10.3 跳台阶</title>
+      <link>https://notes-page-mu.vercel.app/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/10.3%20%E8%B7%B3%E5%8F%B0%E9%98%B6.html</link>
+      <guid>https://notes-page-mu.vercel.app/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/10.3%20%E8%B7%B3%E5%8F%B0%E9%98%B6.html</guid>
+      <source url="https://notes-page-mu.vercel.app/rss.xml">10.3 跳台阶</source>
+      <description>10.3 跳台阶 题目链接 牛客网</description>
+      <pubDate>Wed, 14 Feb 2024 10:13:52 GMT</pubDate>
+      <content:encoded><![CDATA[<h1> 10.3 跳台阶</h1>
+<h2> 题目链接</h2>
+<p><a href="https://www.nowcoder.com/practice/8c82a5b80378478f9484d87d1c5f12a4?tpId=13&amp;tqId=11161&amp;tPage=1&amp;rp=1&amp;ru=/ta/coding-interviews&amp;qru=/ta/coding-interviews/question-ranking&amp;from=cyc_github" target="_blank" rel="noopener noreferrer">牛客网</a></p>
+<h2> 题目描述</h2>
+<p>一只青蛙一次可以跳上 1 级台阶，也可以跳上 2 级。求该青蛙跳上一个 n 级的台阶总共有多少种跳法。</p>
+<div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/9dae7475-934f-42e5-b3b3-12724337170a.png" width="380px"> </div><br>
+<h2> 解题思路</h2>
+<p>当 n = 1 时，只有一种跳法：</p>
+<div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/72aac98a-d5df-4bfa-a71a-4bb16a87474c.png" width="250px"> </div><br>
+<p>当 n = 2 时，有两种跳法：</p>
+<div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/1b80288d-1b35-4cd3-aa17-7e27ab9a2389.png" width="300px"> </div><br>
+<p>跳 n 阶台阶，可以先跳 1 阶台阶，再跳 n-1 阶台阶；或者先跳 2 阶台阶，再跳 n-2 阶台阶。而 n-1 和 n-2 阶台阶的跳法可以看成子问题，该问题的递推公式为：</p>
+<div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/508c6e52-9f93-44ed-b6b9-e69050e14807.jpg" width="350px"> </div><br>
+<div class="language-java line-numbers-mode" data-ext="java"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content:encoded>
+    </item>
+    <item>
+      <title>10.4 变态跳台阶</title>
+      <link>https://notes-page-mu.vercel.app/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/10.4%20%E5%8F%98%E6%80%81%E8%B7%B3%E5%8F%B0%E9%98%B6.html</link>
+      <guid>https://notes-page-mu.vercel.app/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/10.4%20%E5%8F%98%E6%80%81%E8%B7%B3%E5%8F%B0%E9%98%B6.html</guid>
+      <source url="https://notes-page-mu.vercel.app/rss.xml">10.4 变态跳台阶</source>
+      <description>10.4 变态跳台阶 题目链接 牛客网</description>
+      <pubDate>Wed, 14 Feb 2024 10:13:52 GMT</pubDate>
+      <content:encoded><![CDATA[<h1> 10.4 变态跳台阶</h1>
+<h2> 题目链接</h2>
+<p><a href="https://www.nowcoder.com/practice/22243d016f6b47f2a6928b4313c85387?tpId=13&amp;tqId=11162&amp;tPage=1&amp;rp=1&amp;ru=/ta/coding-interviews&amp;qru=/ta/coding-interviews/question-ranking&amp;from=cyc_github" target="_blank" rel="noopener noreferrer">牛客网</a></p>
+<h2> 题目描述</h2>
+<p>一只青蛙一次可以跳上 1 级台阶，也可以跳上 2 级... 它也可以跳上 n 级。求该青蛙跳上一个 n 级的台阶总共有多少种跳法。</p>
+<div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/cd411a94-3786-4c94-9e08-f28320e010d5.png" width="380px"> </div><br>
+<h2> 解题思路</h2>
 <h3> 动态规划</h3>
-<h4> 经典动态规划</h4>
-<h4> 背包问题</h4>
-]]></content:encoded>
+<div class="language-java line-numbers-mode" data-ext="java"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> 数学推导</h3>
+<p>跳上 n-1 级台阶，可以从 n-2 级跳 1 级上去，也可以从 n-3 级跳 2 级上去...，那么</p>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>同样，跳上 n 级台阶，可以从 n-1 级跳 1 级上去，也可以从 n-2 级跳 2 级上去... ，那么</p>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>综上可得</p>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>即</p>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>所以 f(n) 是一个等比数列</p>
+<div class="language-source-java line-numbers-mode" data-ext="source-java"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content:encoded>
     </item>
     <item>
-      <title>go语言学习</title>
-      <link>https://notes-page-mu.vercel.app/contents/golang.html</link>
-      <guid>https://notes-page-mu.vercel.app/contents/golang.html</guid>
-      <source url="https://notes-page-mu.vercel.app/rss.xml">go语言学习</source>
-      <description>go 数据结构 切片和数组 slice 的底层是数组，是对数组的封装，可以用于描述数组的一个片段，两者都可以用于描述。 数组是定长的，而切片则可以动态的扩容。 在存储上，数组是一片连续的内存，而 slice 实质上是一个结构体。他的结构如下： // runtime/slice.go type slice struct { 	array unsafe.Pointer // 元素指针 	len int // 长度 	cap int // 容量 }</description>
-      <pubDate>Wed, 13 Dec 2023 07:24:37 GMT</pubDate>
-      <content:encoded><![CDATA[<h2> go 数据结构</h2>
-<h4> 切片和数组</h4>
-<p>slice 的底层是数组，是对数组的封装，可以用于描述数组的一个片段，两者都可以用于描述。<br>
-数组是定长的，而切片则可以动态的扩容。<br>
-在存储上，数组是一片连续的内存，而 slice 实质上是一个结构体。他的结构如下：</p>
-<div class="language-golang line-numbers-mode" data-ext="golang"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul>
-<li>切片的扩容<br>
-当我们向 slice 中追加了元素后，如果空间不足时就会引起扩容。<br>
-按照以往常见的说法，在 golang1.18 版本更新之前网上大多数的文章都是这样描述 slice 的扩容策略的：</li>
-</ul>
-<blockquote>
-<p>当原 slice 容量小于 1024 的时候，新 slice 容量变成原来的 2 倍；原 slice 容量超过 1024，新 slice 容量变成原来的 1.25 倍。</p>
-</blockquote>
-<p>在 1.18 版本更新之后，slice 的扩容策略变为了：</p>
-<blockquote>
-<p>当原 slice 容量(oldcap)小于 256 的时候，新 slice(newcap)容量为原来的 2 倍；原 slice 容量超过 256，新 slice 容量 newcap = oldcap+(oldcap+3*256)/4</p>
-</blockquote>
-<p>可以看到这是会按照版本动态变化的，扩容的实际实现位于 src/runtime/slice.go 中的 growslice 。</p>
+      <title>11. 旋转数组的最小数字</title>
+      <link>https://notes-page-mu.vercel.app/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/11.%20%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%B0%8F%E6%95%B0%E5%AD%97.html</link>
+      <guid>https://notes-page-mu.vercel.app/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/11.%20%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%B0%8F%E6%95%B0%E5%AD%97.html</guid>
+      <source url="https://notes-page-mu.vercel.app/rss.xml">11. 旋转数组的最小数字</source>
+      <description>11. 旋转数组的最小数字 题目链接 牛客网</description>
+      <pubDate>Wed, 14 Feb 2024 10:13:52 GMT</pubDate>
+      <content:encoded><![CDATA[<h1> 11. 旋转数组的最小数字</h1>
+<h2> 题目链接</h2>
+<p><a href="https://www.nowcoder.com/practice/9f3231a991af4f55b95579b44b7a01ba?tpId=13&amp;tqId=11159&amp;tPage=1&amp;rp=1&amp;ru=/ta/coding-interviews&amp;qru=/ta/coding-interviews/question-ranking&amp;from=cyc_github" target="_blank" rel="noopener noreferrer">牛客网</a></p>
+<h2> 题目描述</h2>
+<p>把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。输入一个非递减排序的数组的一个旋转，输出旋转数组的最小元素。</p>
+<div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/0038204c-4b8a-42a5-921d-080f6674f989.png" width="210px"> </div><br>
+<h2> 解题思路</h2>
+<p>将旋转数组对半分可以得到一个包含最小元素的新旋转数组，以及一个非递减排序的数组。新的旋转数组的长度是原数组的一半，从而将问题规模减少了一半，这种折半性质的算法的时间复杂度为 O(log<sub>2</sub>N)。</p>
+<div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/424f34ab-a9fd-49a6-9969-d76b42251365.png" width="300px"> </div><br>
+<p>此时问题的关键在于确定对半分得到的两个数组哪一个是旋转数组，哪一个是非递减数组。我们很容易知道非递减数组的第一个元素一定小于等于最后一个元素。</p>
+<p>通过修改二分查找算法进行求解（l 代表 low，m 代表 mid，h 代表 high）：</p>
 <ul>
-<li>
-<p>1.18 版本的实现可以通过这里查看：<a href="https://github.com/golang/go/blob/dev.boringcrypto.go1.18/src/runtime/slice.go#L166" target="_blank" rel="noopener noreferrer">https://github.com/golang/go/blob/dev.boringcrypto.go1.18/src/runtime/slice.go#L166</a></p>
-</li>
-<li>
-<p>master 分支的实现在这里：<a href="https://github.com/golang/go/blob/master/src/runtime/slice.go#L157" target="_blank" rel="noopener noreferrer">https://github.com/golang/go/blob/master/src/runtime/slice.go#L157</a><br>
-按照饶大给出的分析，除了在按照规律扩容以外，还会进行内存对齐。</p>
-</li>
-<li>
-<p>切片作为函数参考</p>
-</li>
+<li>当 nums[m] &lt;= nums[h] 时，表示 [m, h] 区间内的数组是非递减数组，[l, m] 区间内的数组是旋转数组，此时令 h = m；</li>
+<li>否则 [m + 1, h] 区间内的数组是旋转数组，令 l = m + 1。</li>
 </ul>
-<blockquote>
-<p>go 中的所有函数传值，都是值传递，没有引用传递。即便是传递了参数指针时，也只是基于内存地址对原有的变量进行操作。</p>
-</blockquote>
-<p>slice 作为函数参数传递时，都会是按照值传递复制这个数据。但由于 slice 本身会携带一个底层数组的指针，在直接操作 slice 中的变量，例如<code>slice[i] = 1</code>时，则会直接改变到原有的数组的值。</p>
-<p>而如果我们对复制的值进行其他操作，如<code>append</code>时，则会生成一个新的 slice，此时原有的数组则不会受到影响。</p>
-<blockquote>
-<p>推测：当我们对一个 slice 操作时，如果没有涉及到原有 slice 的扩容，是否也会影响到？</p>
-</blockquote>
-<h4> map</h4>
-<ul>
-<li>map 的实现<br>
-go 中 map 的底层是一个 hmap</li>
-</ul>
-<div class="language-golang line-numbers-mode" data-ext="golang"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><img src="/images/map.png" alt="image" loading="lazy"></p>
-<p>map 的哈希函数：在程序启动时，会检测 cpu 是否支持 aes，如果支持，则使用 aes hash，否则使用 memhash。<br>
-map 使用链地址法处理哈希冲突，因此当哈希碰撞发生时，map 会最终退化成一个链表。</p>
-<ul>
-<li>
-<p>map 的遍历<br>
-map 会在遍历开始时，生成随机树种子，随机的访问其中的一个 bucket，另外由于 map 会有扩容搬迁过程，导致 map 的遍历是<strong>一定</strong>会无序的</p>
-</li>
-<li>
-<p>map 的查找</p>
-</li>
-</ul>
-<ol>
-<li>写保护机制<br>
-先查 hmap 的标志位 flags,如果 flags 写标志位此时是 1,说明其他协程正在写操作,直接 panic</li>
-<li>计算 hash 值<br>
-key 经过哈希函数计算后,得到 64bit(64 位 CPU)<br>
-10010111 | 101011101010110101010101101010101010 | 10010</li>
-<li>找到 hash 对应的桶<br>
-上面 64 位后 5(hmap 的 B 值)位定位所存放的桶<br>
-如果当前正在扩容中,并且定位到旧桶数据还未完成迁移,则使用旧的桶</li>
-<li>遍历桶查找<br>
-上面 64 位前 8 位用来在 tophash 数组查找快速判断 key 是否在当前的桶中,如果不在需要去溢出桶查找</li>
-<li>返回 key 对应的指针</li>
-</ol>
-<ul>
-<li>
-<p>map 的赋值</p>
-</li>
-<li>
-<p>map 的扩容</p>
-<ul>
-<li>
-<p>扩容时机：向 map 插入新 key 的时候，会进行条件检测，符合下面这 2 个条件，就会触发扩容</p>
-<ul>
-<li>
-<p>超过负载 map 元素个数 &gt; 6.5（负载因子） * 桶个数</p>
-<blockquote>
-
-</blockquote>
-
-</li>
-<li>
-<p>溢出桶太多<br>
-当桶总数&lt;2^15 时，如果溢出桶总数&gt;=桶总数，则认为溢出桶过多<br>
-当桶总数&gt;2^15 时，如果溢出桶总数&gt;=2^15，则认为溢出桶过多</p>
-</li>
-</ul>
-</li>
-<li>
-<p>扩容机制：</p>
-<ul>
-<li>双倍扩容：针对条件 1，新建一个 buckets 数组，新的 buckets 大小是原来的 2 倍，然后旧 buckets 数据搬迁到新的 buckets。</li>
-<li>等量扩容：针对条件 2，并不扩大容量，buckets 数量维持不变，重新做一遍类似双倍扩容的搬迁动作，把松散的键值对重新排列一次，使得同一个 bucket 中的 key 排列地更紧密，节省空间，提高 bucket 利用率，进而保证更快的存取。</li>
-</ul>
-</li>
-<li>
-<p>渐进式扩容：<br>
-插入修改删除 key 的时候，都会尝试进行搬迁桶的工作，每次都会检查 oldbucket 是否 nil，如果不是 nil 则每次搬迁 2 个桶，蚂蚁搬家一样渐进式扩容</p>
-</li>
-</ul>
-</li>
-<li>
-<p>map 的 key 可以有哪些</p>
-</li>
-</ul>
-<p>Go 语言中只要是可比较的类型都可以作为 key。除开 slice，map，functions 这几种类型，其他类型都是 OK 的。具体包括：布尔值、数字、字符串、指针、通道、接口类型、结构体、只包含上述类型的数组。<br>
-任何类型都可以作为 value，包括 map 类型。</p>
-<ul>
-<li>
-<p>map 的线程安全<br>
-map 不是一个线程安全的结构，同时读写时会直接 panic。<br>
-但如果在同一个协程内进行同时读写，不会被编译器检测到，但这是危险的操作。一般可以通过<code>sync.RWMutex</code>解决<br>
-<code>sync.Map</code>是线程安全的 map，可以用来使用，但<code>sync.Map</code>没有<code>len</code>方法，需要自己遍历实现。</p>
-</li>
-<li>
-<p>map 深度相等的条件：</p>
-</li>
-</ul>
-<ol>
-<li>都为 nil</li>
-<li>非空、长度相等，指向同一个 map 实体对象</li>
-<li>相应的 key 指向的 value “深度”相等</li>
-</ol>
-<h2> 接口 Interface</h2>
-<ul>
-<li>接口</li>
-</ul>
-<p>接口支持鸭子类型<code>Duck Typing</code>。也就是编译器可以通过判断一个类型是否显式的实现了某一个接口。如果有，那么即便没有声明，也会被认为实现了该接口。</p>
-<ul>
-<li>接口的值接受者和指针接受者</li>
-</ul>
-<p>直接说结果：值接受者和指针接受者可以直接混用，这是编译器做了一些隐式转换。</p>
-<table>
-<thead>
-<tr>
-<th>-</th>
-<th>值接收者</th>
-<th>指针接收者</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>值类型调用者</td>
-<td>方法会使用调用者的一个副本，类似于“传值”</td>
-<td>使用值的引用来调用方法</td>
-</tr>
-<tr>
-<td>指针类型调用者</td>
-<td>指针被解引用为值</td>
-<td>实际上也是“传值”，方法里的操作会影响到调用者，类似于指针传参，拷贝了一份指针</td>
-</tr>
-</tbody>
-</table>
-<p>使用指针作为方法的接收者的理由：</p>
-<ul>
-<li>方法能够修改接收者指向的值。</li>
-<li>避免在每次调用方法时复制该值，在值的类型为大型结构体时，这样做会更加高效。</li>
-</ul>
-<h2> Channel</h2>
-<h2> go 标准库</h2>
-<h2> 调度器</h2>
-<ul>
-<li>调度器<br>
-go 程序的执行由两部分组成，go Program 和 Runtime， 他们通过函数调用来实现内存灌流吗，channel 通信，goroutines 创建等。用户程序进行的系统调用都会被拦截，以此来帮助它进行调度和 GC。</li>
-</ul>
-<p>调度器有 3 个最基础的部分，g, m, p。</p>
-<ul>
-<li>
-<p><code>g</code>表示一个 goroutine，他表示 goroutine 栈的一些字段，指示当前运行的状态</p>
-</li>
-<li>
-<p><code>m</code>表示内核线程，包含正在运行的 goroutine 等字段</p>
-</li>
-<li>
-<p><code>p</code>表示一个虚拟的 Processor，它维护一个处于 runnalbe 的 g 队列，m 需要获得 p 才能运行。</p>
-</li>
-</ul>
-<p>当然还有一个核心结构体<code>sched</code>，它纵览全局。</p>
-<p>需要注意的是，有的文章会提到 go 是协作式调度，但现在 go 会同时有 <code>同步协作式调度</code>和<code>异步抢占式调度</code> 。 <a href="https://golang.design/under-the-hood/zh-cn/part2runtime/ch06sched/preemption/" target="_blank" rel="noopener noreferrer">细节与原因</a></p>
-<p>调度器的运行比较复杂，我们从我们需要知道的部分入手即可。<br>
-<img src="/images/gmp-flow.png" alt="image" loading="lazy"></p>
-<ul>
-<li>goroutine<br>
-一个 goroutine 会有以下几种状态（简化）
-<ul>
-<li>Waiting, 等待</li>
-<li>Runnable, 就绪，只要 M 给命令就可以运行</li>
-<li>Executing, 运行，在 M 上执行命令</li>
-</ul>
-</li>
-</ul>
-<p>runtime 程序在程序启动时，会创建 M 个线程，之后会有 N 个 goroutine，这就是 M:N 模型。</p>
-<ul>
-<li>工作窃取<br>
-当一个 P 发现自己的工作队列 LRQ 没有 G 时，会从其他 P 中“偷”一些 G 来运行，就是 <code>work stealing</code>。</li>
-</ul>
-<blockquote>
-<p>go 的调度还有很多可以深挖，值得不断学习</p>
-</blockquote>
-<h2> GC</h2>
-<ul>
-<li>三色标记法</li>
-</ul>
-<p>go 使用三色标记法来进行 GC，用不同的颜色标记可能需要回收的对象</p>
-<ul>
-<li>
-<p>白色对象（可能死亡）：未被回收器访问到的对象。在回收开始阶段，所有对象均为白色，当回收结束后，白色对象均不可达。</p>
-</li>
-<li>
-<p>灰色对象（波面）：已被回收器访问到的对象，但回收器需要对其中的一个或多个指针进行扫描，因为他们可能还指向白色对象。</p>
-</li>
-<li>
-<p>黑色对象（确定存活）：已被回收器访问到的对象，其中所有字段都已被扫描，黑色对象中任何一个指针都不可能直接指向白色对象。</p>
-</li>
-<li>
-<p>STW</p>
-</li>
-</ul>
-<p>STW 就是 <code>Stop the world</code>，在 GC 时，会进入短暂的暂停所有的运行，拖慢程序。进过不断优化，现在的 GC 仅需要几毫秒。</p>
-<h2> 编译与运行</h2>
-<h4> go 程序的运行过程</h4>
-<p>参考文献里的一篇文章【探索 golang 程序启动过程】研究得比较深入，总结下：</p>
-<ol>
-<li>检查运行平台的 CPU，设置好程序运行需要相关标志。<br>
-TLS 的初始化。</li>
-<li>runtime.args、runtime.osinit、runtime.schedinit 三个方法做好程序运行需要的各种变量与调度器。</li>
-<li>runtime.newproc 创建新的 goroutine 用于绑定用户写的 main 方法。</li>
-<li>runtime.mstart 开始 goroutine 的调度。<br>
-<img src="/images/go_start.png" alt="image" loading="lazy"></li>
-</ol>
-<h4> 编译时的逃逸分析</h4>
-<p>简单地讲，逃逸分析就是分析程序中的内存是否会被分配到堆上去，而如果编译器判断变量会被分配到堆上，但变量在函数返回后不会被再次引用，这个变量还是会被分配到栈上。</p>
-<p>go 语音的分析原则是：如果一个函数返回对一个变量的引用，那么它就会发生逃逸。</p>
-<p>逃逸的处理方法是</p>
-<ul>
-<li>如果函数外部没有引用，则优先放到栈中</li>
-<li>如果函数外部存在引用，则必定放到堆中</li>
-</ul>
-<h3> 阅读</h3>
-<ul>
-<li>
-<p><a href="https://golang.design/go-questions/" target="_blank" rel="noopener noreferrer">Go 程序员面试笔试宝典</a></p>
-</li>
-<li>
-<p><a href="https://draveness.me/golang/" target="_blank" rel="noopener noreferrer">Go 语言设计与实现</a></p>
-</li>
-<li>
-<p><a href="https://golang.design/under-the-hood/" target="_blank" rel="noopener noreferrer">Go 语言原本</a></p>
-</li>
-</ul>
-<h3> 其他</h3>
-<ul>
-<li><a href="https://learnku.com/articles/69250" target="_blank" rel="noopener noreferrer">GO 面试题集锦快答</a></li>
-</ul>
-]]></content:encoded>
-      <enclosure url="https://notes-page-mu.vercel.app/images/map.png" type="image/png"/>
+<div class="language-java line-numbers-mode" data-ext="java"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>如果数组元素允许重复，会出现一个特殊的情况：nums[l] == nums[m] == nums[h]，此时无法确定解在哪个区间，需要切换到顺序查找。例如对于数组 {1,1,1,0,1}，l、m 和 h 指向的数都为 1，此时无法知道最小数字 0 在哪个区间。</p>
+<div class="language-java line-numbers-mode" data-ext="java"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content:encoded>
     </item>
     <item>
-      <title>阅读</title>
-      <link>https://notes-page-mu.vercel.app/contents/Books.html</link>
-      <guid>https://notes-page-mu.vercel.app/contents/Books.html</guid>
-      <source url="https://notes-page-mu.vercel.app/rss.xml">阅读</source>
-      <description>pdf链接 labuladong的刷题笔记V1.0 labuladong的算法秘籍V1.0 其他 币圈红宝书</description>
-      <pubDate>Fri, 09 Dec 2022 07:23:51 GMT</pubDate>
-      <content:encoded><![CDATA[<h3> pdf链接</h3>
-<ul>
-<li>
-<p><a href="/files/pdf/labuladong%E7%9A%84%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0V1.0.pdf">labuladong的刷题笔记V1.0</a></p>
-</li>
-<li>
-<p><a href="/files/pdf/labuladong%E7%9A%84%E7%AE%97%E6%B3%95%E7%A7%98%E7%B1%8DV1.0.pdf">labuladong的算法秘籍V1.0</a></p>
-</li>
-</ul>
-<h3> 其他</h3>
-<ul>
-<li><a href="/files/pdf/%E5%B8%81%E5%9C%88%E7%BA%A2%E5%AE%9D%E4%B9%A6.pdf">币圈红宝书</a></li>
-</ul>
-]]></content:encoded>
+      <title>12. 矩阵中的路径</title>
+      <link>https://notes-page-mu.vercel.app/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/12.%20%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84.html</link>
+      <guid>https://notes-page-mu.vercel.app/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/12.%20%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84.html</guid>
+      <source url="https://notes-page-mu.vercel.app/rss.xml">12. 矩阵中的路径</source>
+      <description>12. 矩阵中的路径 牛客网 题目描述 判断在一个矩阵中是否存在一条包含某字符串所有字符的路径。路径可以从矩阵中的任意一个格子开始，每一步可以在矩阵中向上下左右移动一个格子。如果一条路径经过了矩阵中的某一个格子，则该路径不能再进入该格子。</description>
+      <pubDate>Wed, 14 Feb 2024 10:13:52 GMT</pubDate>
+      <content:encoded><![CDATA[<h1> 12. 矩阵中的路径</h1>
+<p><a href="https://www.nowcoder.com/practice/69fe7a584f0a445da1b6652978de5c38?tpId=13&amp;tqId=11218&amp;tab=answerKey&amp;from=cyc_github" target="_blank" rel="noopener noreferrer">牛客网</a></p>
+<h2> 题目描述</h2>
+<p>判断在一个矩阵中是否存在一条包含某字符串所有字符的路径。路径可以从矩阵中的任意一个格子开始，每一步可以在矩阵中向上下左右移动一个格子。如果一条路径经过了矩阵中的某一个格子，则该路径不能再进入该格子。</p>
+<p>例如下面的矩阵包含了一条 bfce 路径。</p>
+<div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/1db1c7ea-0443-478b-8df9-7e33b1336cc4.png" width="200px"> </div><br>
+<h2> 解题思路</h2>
+<p>使用回溯法（backtracking）进行求解，它是一种暴力搜索方法，通过搜索所有可能的结果来求解问题。回溯法在一次搜索结束时需要进行回溯（回退），将这一次搜索过程中设置的状态进行清除，从而开始一次新的搜索过程。例如下图示例中，从 f 开始，下一步有 4 种搜索可能，如果先搜索 b，需要将 b 标记为已经使用，防止重复使用。在这一次搜索结束之后，需要将 b 的已经使用状态清除，并搜索 c。</p>
+<div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/dc964b86-7a08-4bde-a3d9-e6ddceb29f98.png" width="200px"> </div><br>
+<p>本题的输入是数组而不是矩阵（二维数组），因此需要先将数组转换成矩阵。</p>
+<div class="language-java line-numbers-mode" data-ext="java"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content:encoded>
+    </item>
+    <item>
+      <title>13. 机器人的运动范围</title>
+      <link>https://notes-page-mu.vercel.app/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/13.%20%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E8%BF%90%E5%8A%A8%E8%8C%83%E5%9B%B4.html</link>
+      <guid>https://notes-page-mu.vercel.app/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/13.%20%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E8%BF%90%E5%8A%A8%E8%8C%83%E5%9B%B4.html</guid>
+      <source url="https://notes-page-mu.vercel.app/rss.xml">13. 机器人的运动范围</source>
+      <description>13. 机器人的运动范围 牛客网 题目描述</description>
+      <pubDate>Wed, 14 Feb 2024 10:13:52 GMT</pubDate>
+      <content:encoded><![CDATA[<h1> 13. 机器人的运动范围</h1>
+<p><a href="https://www.nowcoder.com/practice/6e5207314b5241fb83f2329e89fdecc8?tpId=13&amp;tqId=11219&amp;tPage=1&amp;rp=1&amp;ru=/ta/coding-interviews&amp;qru=/ta/coding-interviews/question-ranking&amp;from=cyc_github" target="_blank" rel="noopener noreferrer">牛客网</a></p>
+<h2> 题目描述</h2>
+<p>地上有一个 m 行和 n 列的方格。一个机器人从坐标 (0, 0) 的格子开始移动，每一次只能向左右上下四个方向移动一格，但是不能进入行坐标和列坐标的数位之和大于 k 的格子。</p>
+<p>例如，当 k 为 18 时，机器人能够进入方格 (35,37)，因为 3+5+3+7=18。但是，它不能进入方格 (35,38)，因为 3+5+3+8=19。请问该机器人能够达到多少个格子？</p>
+<h2> 解题思路</h2>
+<p>使用深度优先搜索（Depth First Search，DFS）方法进行求解。回溯是深度优先搜索的一种特例，它在一次搜索过程中需要设置一些本次搜索过程的局部状态，并在本次搜索结束之后清除状态。而普通的深度优先搜索并不需要使用这些局部状态，虽然还是有可能设置一些全局状态。</p>
+<div class="language-java line-numbers-mode" data-ext="java"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content:encoded>
+    </item>
+    <item>
+      <title>14. 剪绳子</title>
+      <link>https://notes-page-mu.vercel.app/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/14.%20%E5%89%AA%E7%BB%B3%E5%AD%90.html</link>
+      <guid>https://notes-page-mu.vercel.app/contents/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/14.%20%E5%89%AA%E7%BB%B3%E5%AD%90.html</guid>
+      <source url="https://notes-page-mu.vercel.app/rss.xml">14. 剪绳子</source>
+      <description>14. 剪绳子 题目链接 牛客网 题目描述 把一根绳子剪成多段，并且使得每段的长度乘积最大。 n = 2 return 1 (2 = 1 + 1) n = 10 return 36 (10 = 3 + 3 + 4)</description>
+      <pubDate>Wed, 14 Feb 2024 10:13:52 GMT</pubDate>
+      <content:encoded><![CDATA[<h1> 14. 剪绳子</h1>
+<h2> 题目链接</h2>
+<p><a href="https://www.nowcoder.com/practice/57d85990ba5b440ab888fc72b0751bf8?tpId=13&amp;tqId=33257&amp;tab=answerKey&amp;from=cyc_github" target="_blank" rel="noopener noreferrer">牛客网</a></p>
+<h2> 题目描述</h2>
+<p>把一根绳子剪成多段，并且使得每段的长度乘积最大。</p>
+<div class="language-html line-numbers-mode" data-ext="html"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 解题思路</h2>
+<h3> 贪心</h3>
+<p>尽可能得多剪长度为 3 的绳子，并且不允许有长度为 1 的绳子出现。如果出现了，就从已经切好长度为 3 的绳子中拿出一段与长度为 1 的绳子重新组合，把它们切成两段长度为 2 的绳子。以下为证明过程。</p>
+<p>将绳子拆成 1 和 n-1，则 1(n-1)-n=-1&lt;0，即拆开后的乘积一定更小，所以不能出现长度为 1 的绳子。</p>
+<p>将绳子拆成 2 和 n-2，则 2(n-2)-n = n-4，在 n&gt;=4 时这样拆开能得到的乘积会比不拆更大。</p>
+<p>将绳子拆成 3 和 n-3，则 3(n-3)-n = 2n-9，在 n&gt;=5 时效果更好。</p>
+<p>将绳子拆成 4 和 n-4，因为 4=2*2，因此效果和拆成 2 一样。</p>
+<p>将绳子拆成 5 和 n-5，因为 5=2+3，而 5&lt;2*3，所以不能出现 5 的绳子，而是尽可能拆成 2 和 3。</p>
+<p>将绳子拆成 6 和 n-6，因为 6=3+3，而 6&lt;3*3，所以不能出现 6 的绳子，而是拆成 3 和 3。这里 6 同样可以拆成 6=2+2+2，但是 3(n - 3) - 2(n - 2) = n - 5 &gt;= 0，在 n&gt;=5 的情况下将绳子拆成 3 比拆成 2 效果更好。</p>
+<p>继续拆成更大的绳子可以发现都比拆成 2 和 3 的效果更差，因此我们只考虑将绳子拆成 2 和 3，并且优先拆成 3，当拆到绳子长度 n 等于 4 时，也就是出现 3+1，此时只能拆成 2+2。</p>
+<div class="language-java line-numbers-mode" data-ext="java"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> 动态规划</h3>
+<div class="language-java line-numbers-mode" data-ext="java"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content:encoded>
     </item>
   </channel>
 </rss>
