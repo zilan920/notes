@@ -1,6 +1,6 @@
 ---
 article: true
-title: 算法题
+title: Leetcode
 icon: read
 ---
 
