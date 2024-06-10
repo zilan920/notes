@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta property="og:url" content="https://notes-page-mu.vercel.app/%E6%8A%80%E6%9C%AF/http3.html"><meta property="og:site_name" content="我的笔记"><meta property="og:title" content="HTTP3 and RTT"><meta property="og:description" content="几年前做了关于HTTP3的分享，为了避免遗忘，将内容整理出来并完善 什么是RTT RTT是Round Trip Time的缩写，通俗地说，就是通信一来一回的时间。我们可以使用RTT快速评估协议所需要的传输时间。 一次HTTP循环的时间 那么一次TCP建立连接时的握手，一共需要 1.5RTT 而对于一个HTTP请求&amp;响应，加上HTTP Request&amp;Response，算作一个1RTT。 那么基于TCP的的HTTP的消耗时间总和，就是 1.5RTT + 1RTT = 2.5RTT"><meta property="og:type" content="article"><meta property="og:image" content="https://notes-page-mu.vercel.app/"><meta property="og:locale" content="zh-CN"><meta property="og:updated_time" content="2024-06-10T15:11:26.000Z"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image:alt" content="HTTP3 and RTT"><meta property="article:author" content="zihan"><meta property="article:modified_time" content="2024-06-10T15:11:26.000Z"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"HTTP3 and RTT","image":["https://notes-page-mu.vercel.app/"],"dateModified":"2024-06-10T15:11:26.000Z","author":[{"@type":"Person","name":"zihan","url":"https://github.com/zilan920/notes"}]}</script><link rel="alternate" type="application/rss+xml" href="https://notes-page-mu.vercel.app/rss.xml" title="我的笔记 RSS Feed"><title>HTTP3 and RTT | 我的笔记</title><meta name="description" content="几年前做了关于HTTP3的分享，为了避免遗忘，将内容整理出来并完善 什么是RTT RTT是Round Trip Time的缩写，通俗地说，就是通信一来一回的时间。我们可以使用RTT快速评估协议所需要的传输时间。 一次HTTP循环的时间 那么一次TCP建立连接时的握手，一共需要 1.5RTT 而对于一个HTTP请求&amp;响应，加上HTTP Request&amp;Response，算作一个1RTT。 那么基于TCP的的HTTP的消耗时间总和，就是 1.5RTT + 1RTT = 2.5RTT">
+    <meta name="keywords" content="学习笔记" />
+    <style>
+      :root {
+        --bg-color: #fff;
+      }
+
+      html[data-theme="dark"] {
+        --bg-color: #1d2025;
+      }
+
+      html,
+      body {
+        background-color: var(--bg-color);
+      }
+    </style>
+    <script>
+      const userMode = localStorage.getItem("vuepress-theme-hope-scheme");
+      const systemDarkMode =
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+      if (userMode === "dark" || (userMode !== "light" && systemDarkMode)) {
+        document.querySelector("html").setAttribute("data-theme", "dark");
+      }
+    </script>
+    <link rel="preload" href="/assets/style-_CHB1rZd.css" as="style"><link rel="stylesheet" href="/assets/style-_CHB1rZd.css">
+    <!--vuepress-ssr-resources-->
+  </head>
+  <body>
+    <div id="app"><!--vuepress-ssr-app--></div>
+    <script type="module" src="/assets/app-Tv3ccu14.js" defer></script>
+  </body>
+</html>

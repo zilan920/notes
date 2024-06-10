@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta property="og:url" content="https://notes-page-mu.vercel.app/%E6%8A%80%E6%9C%AF/%E7%AE%97%E6%B3%95%E9%A2%98/jzoffer/17.%20%E6%89%93%E5%8D%B0%E4%BB%8E%201%20%E5%88%B0%E6%9C%80%E5%A4%A7%E7%9A%84%20n%20%E4%BD%8D%E6%95%B0.html"><meta property="og:site_name" content="我的笔记"><meta property="og:title" content="17. 打印从 1 到最大的 n 位数"><meta property="og:description" content="17. 打印从 1 到最大的 n 位数 题目描述 输入数字 n，按顺序打印出从 1 到最大的 n 位十进制数。比如输入 3，则打印出 1、2、3 一直到最大的 3 位数即 999。 解题思路 由于 n 可能会非常大，因此不能直接用 int 表示数字，而是用 char 数组进行存储。 使用回溯法得到所有的数。 public void print1ToMaxOfNDigits(int n) { if (n &lt;= 0) return; char[] number = new char[n]; print1ToMaxOfNDigits(number, 0); } private void print1ToMaxOfNDigits(char[] number, int digit) { if (digit == number.length) { printNumber(number); return; } for (int i = 0; i &lt; 10; i++) { number[digit] = (char) (i + '0'); print1ToMaxOfNDigits(number, digit + 1); } } private void printNumber(char[] number) { int index = 0; while (index &lt; number.length &amp;&amp; number[index] == '0') index++; while (index &lt; number.length) System.out.print(number[index++]); System.out.println(); }"><meta property="og:type" content="article"><meta property="og:locale" content="zh-CN"><meta property="og:updated_time" content="2024-06-10T15:11:26.000Z"><meta property="article:author" content="zihan"><meta property="article:modified_time" content="2024-06-10T15:11:26.000Z"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"17. 打印从 1 到最大的 n 位数","image":[""],"dateModified":"2024-06-10T15:11:26.000Z","author":[{"@type":"Person","name":"zihan","url":"https://github.com/zilan920/notes"}]}</script><link rel="alternate" type="application/rss+xml" href="https://notes-page-mu.vercel.app/rss.xml" title="我的笔记 RSS Feed"><title>17. 打印从 1 到最大的 n 位数 | 我的笔记</title><meta name="description" content="17. 打印从 1 到最大的 n 位数 题目描述 输入数字 n，按顺序打印出从 1 到最大的 n 位十进制数。比如输入 3，则打印出 1、2、3 一直到最大的 3 位数即 999。 解题思路 由于 n 可能会非常大，因此不能直接用 int 表示数字，而是用 char 数组进行存储。 使用回溯法得到所有的数。 public void print1ToMaxOfNDigits(int n) { if (n &lt;= 0) return; char[] number = new char[n]; print1ToMaxOfNDigits(number, 0); } private void print1ToMaxOfNDigits(char[] number, int digit) { if (digit == number.length) { printNumber(number); return; } for (int i = 0; i &lt; 10; i++) { number[digit] = (char) (i + '0'); print1ToMaxOfNDigits(number, digit + 1); } } private void printNumber(char[] number) { int index = 0; while (index &lt; number.length &amp;&amp; number[index] == '0') index++; while (index &lt; number.length) System.out.print(number[index++]); System.out.println(); }">
+    <meta name="keywords" content="学习笔记" />
+    <style>
+      :root {
+        --bg-color: #fff;
+      }
+
+      html[data-theme="dark"] {
+        --bg-color: #1d2025;
+      }
+
+      html,
+      body {
+        background-color: var(--bg-color);
+      }
+    </style>
+    <script>
+      const userMode = localStorage.getItem("vuepress-theme-hope-scheme");
+      const systemDarkMode =
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+      if (userMode === "dark" || (userMode !== "light" && systemDarkMode)) {
+        document.querySelector("html").setAttribute("data-theme", "dark");
+      }
+    </script>
+    <link rel="preload" href="/assets/style-_CHB1rZd.css" as="style"><link rel="stylesheet" href="/assets/style-_CHB1rZd.css">
+    <!--vuepress-ssr-resources-->
+  </head>
+  <body>
+    <div id="app"><!--vuepress-ssr-app--></div>
+    <script type="module" src="/assets/app-Tv3ccu14.js" defer></script>
+  </body>
+</html>
