@@ -6,8 +6,8 @@
     <link>https://notes-page-mu.vercel.app/</link>
     <description>我的笔记</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 10 Jun 2024 15:17:55 GMT</pubDate>
-    <lastBuildDate>Mon, 10 Jun 2024 15:17:55 GMT</lastBuildDate>
+    <pubDate>Mon, 10 Jun 2024 15:21:16 GMT</pubDate>
+    <lastBuildDate>Mon, 10 Jun 2024 15:21:16 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -809,8 +809,8 @@ TLS 的初始化。</li>
 <div class="language-go line-numbers-mode" data-ext="go"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>但当天的面试并非直接做题这么顺利：面试官首先没有给出二叉树包含父节点的重要条件，在做这个题之前，我并没有背下每一道剑指offer题目要求，并能从其中的条件判断是否有未给出的信息。除此以外，在和面试官再三确认之后，面试官给出的函数入口被误解成了<code>func NextNode(root *TreeNode, target *TreeNode)</code>，基于这样的条件，我势必需要分析根节点给出信息的必要性，尝试从根节点入手找到结果。</p>
 <p>事实上，如果仅仅是上面这些情况下没做出来，这也并不是面试官的问题。在没有父节点指针的条件下，依然可以通过迭代的形式找到目标节点，这实际上是一个考察非递归形式的中序遍历，我们可以写出这样的代码：</p>
 <div class="language-go line-numbers-mode" data-ext="go"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>如果面试能写出这样的代码，那也是可以正常通过的。我在面试中一开始想到了前面第一种方法中的查找方式。我想到了如果节点是当前节点的情况下如何向右查找，但由于不方便找到父节点而不能继续写下去。我没有背过剑指offer原题，也没有想到这里会有额外的节点可以使用。</p>
-<p>我开始与面试官沟通，在和面试官介绍了我的想法后，面试官肯定了我的一半思路，并表示就按照目前的想法往下写，我在这样的引导下只能强行思考如何向上找到想要的答案，面试官也没有给出更进一步的指引。最终时间耗尽，面试结束。</p>
-<p>总结起来这道面试题的经历就是：面试官在遗漏重要信息，给出误导信息，并在沟通中给出了错误引导。面试总是具有随机与偶然性，一次面试也并不能代表整体水平，但在这次面试后，后续所有投递向tiktok的岗位全都被拒，这只能理解为这次面试的负面评价所致。这使得这次面试更具其意义。</p>
+<p>我开始与面试官沟通，在和面试官介绍了我的想法后，面试官肯定了我的一半思路，并表示就按照目前的想法往下写，我在这样的引导下只能强行思考如何向上找到想要的答案，面试官也没有给出更进一步的指引。最终时间耗尽，面试结束。从这个角度看，面试官似乎是想要我按照原题的思路写下去的，但在没有信息的情况下很难继续下去，也就更难跳出思维，使用非递归形式实现了。</p>
+<p>总结起来这道面试题的经历就是：面试官在遗漏重要信息，给出误导信息，并在沟通中给出了错误引导。面试总是具有随机与偶然性，一次面试也并不能代表整体水平，但在这次面试后，后续所有投递向tiktok的岗位全都被拒，这只能理解为这次面试的负面评价所致，这使得这次面试更具其意义。</p>
 <p>记录下这次面试经历，希望提醒自己在后续的面试中能有更多对出题者的思考，而不是总被牵着脖子走。</p>
 ]]></content:encoded>
     </item>
